@@ -1,13 +1,19 @@
 
 
 function App() {
-const img = "https://picsum.photos/200/300"
+const customStyle = { 
+  color : "blue",
+  fontSize : "30px",
+  border :"1px solid black"
+  
+
+
+}
   return (
     
 
     <div>
-      <h1>IMAGES</h1>
-      <img src= {img}/>
+      <h1 style ={customStyle}>MENTREX ACADEMY</h1>
     </div>
 
   )}
