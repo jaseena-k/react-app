@@ -1,21 +1,18 @@
-import {add ,multiply, substract, divide} from "./calculater"
-function App() {
-   return (
+import React from "react";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Note from "./components/Note";
 
+function App(){
 
+  return (
     <div>
-      <ul>
-        <li>{add(2,4)}</li>
-        <li>{multiply(6,8)}</li>
-        <li>{substract(5,9)}</li>
-        <li>{divide(9,3)}</li>
-      </ul>
+      <Header/>
+      <Note/>
+      <Footer/>
     </div>
-
   )
-
 }
 
-
- 
 export default App
+ 
