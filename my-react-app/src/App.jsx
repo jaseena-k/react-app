@@ -1,33 +1,21 @@
-
-
+import {add ,multiply, substract, divide} from "./calculater"
 function App() {
-const date= new Date()
-const currentTime = date.getHours()
-let greeting
+   return (
 
-if (currentTime < 12){
-  greeting ="goodmorning"
-
-}else if(currentTime < 18){
-  greeting = "good afternoon"
-}
-else{
-  greeting ="good night"
-
-}
-
-
-  return (
-    
 
     <div>
-      <h1>{greeting}</h1>
+      <ul>
+        <li>{add(2,4)}</li>
+        <li>{multiply(6,8)}</li>
+        <li>{substract(5,9)}</li>
+        <li>{divide(9,3)}</li>
+      </ul>
     </div>
 
   )
 
-
 }
 
-  
+
+ 
 export default App
