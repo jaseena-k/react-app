@@ -1,32 +1,34 @@
-import React from "react"
-import cars from "./practice"
+import React, { useState } from "react"
 
 function App(){
 
-  const [honda , tesla] = cars
-  const {speedStats : {topSpeed :hondaTopSpeed}} = honda
-  const {speedStats: {topSpeed :teslaTopSpeed}} = tesla
-  const {coloursByPopularity :[hondaTopColour]} =honda
-   const {coloursByPopularity : [teslaTopColour]} =tesla
-  return (
-    <table>
-      <tr>
-        <th>Brand</th>
-        <th>Top speed</th>
-        <th>Top colour</th>
-      </tr>
-      <tr>
-        <td>{honda.model}</td>
-        <td>{hondaTopSpeed}</td>
-        <td>{hondaTopColour}</td>
-      </tr>
-      <tr>
-        <td>{tesla.model}</td>
-        <td>{teslaTopSpeed}</td>
-        <td>{teslaTopColour}</td>
-      </tr>
-    </table>
-  )
+    const [headingText,setHeadingText] =useState("Hello")
+    const [isMouseOver,setMouseOver] = useState(false)
+    
+    function handlingClick(){
+      setHeadingText("submitted")
+    }
+   function handleMouseOver(){
+    setMouseOver(true)
+
+   }
+   function handleMouseOut(){
+    setMouseOver(false)
+   }
+    
+
+   return (
+    <div className="container">
+      <h1> {headingText} </h1>
+      <input type="text" placeholder="userName"/>
+      <button style = {{backgroundColor : isMouseOver ?  "black" : "white"}}
+      onClick={handlingClick}
+      onMouseOver={handleMouseOver}
+      onMouseOut={handleMouseOut}
+      >submit </button>
+    </div>
+   )
+  
 }
 
 export default App
