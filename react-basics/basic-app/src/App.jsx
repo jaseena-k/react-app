@@ -1,37 +1,71 @@
-import React, { useState } from "react"
+import React, { useState } from "react";
 
-function App(){
-    const [name , setName] = useState("")
-    const [headingText , setHeadingText] = useState("")
+function App() {
+  const [contact, setContact] = useState({
+    fName: "",
+    lName: "",
+    email: "",
+  });
+  function handleChange(event) {
+    const { name, value } = event.target;
 
+    event.preventDefault();
 
-function handleChange(event){
-  setName(event.target.value)
-
-  
-
-}
-
-function handleClick(event){
-    setHeadingText(name)
-  
-    event.preventDefault()
-  
+    setContact((prevValue) => {
+      if (name === "fName") {
+        return {
+          fName: value,
+          lName: prevValue.lName,
+          email: prevValue.email,
+        };
+      } else if (name === "lName") {
+        return {
+          fName: prevValue.fName,
+          lName: value,
+          email: prevValue.email,
+        };
+      } else if (name === "email") {
+        return {
+          fName: prevValue.fName,
+          lName: prevValue.lName,
+          email: value,
+        };
+      }
+    });
   }
 
-   return (
+  return (
     <div className="container">
-      <h1>Hello {headingText}</h1>
-      <input type="text"
-      onChange={handleChange}
-      placeholder="what is your name?!"
-      value={name} 
-      
-      />
-      <button onClick={handleClick}>submit </button>
+      <h1>
+        Hello{contact.fName}
+        {contact.lName}
+      </h1>
+      <p>{contact.email}</p>
+      <form>
+        <input
+          type="text"
+          onChange={handleChange}
+          value={contact.fName}
+          placeholder="First Name"
+        />
+        <input
+          type="text"
+          onChange={handleChange}
+          value={contact.lName}
+          name=""
+          placeholder="Last Name"
+        />
+        <input
+          type="text"
+          onChange={handleChange}
+          value={contact.email}
+          placeholder="Email"
+        />
+      </form>
+
+      <button>submit </button>
     </div>
-   )
-  
+  );
 }
 
-export default App
+export default App;
