@@ -1,0 +1,21 @@
+import React from "react";
+import {NavLink} from "react-router";
+
+export default function Header(){
+    return(
+
+        <div className="header">
+            <NavLink to="/">
+            <span>Home</span>
+            </NavLink>
+            <NavLink to="usage">
+            <span>Usages</span>
+            </NavLink>
+            <NavLink to="settings">
+            <span>Settings</span>
+            </NavLink>
+
+
+        </div>
+    )
+}

@@ -1,71 +1,29 @@
-import React, { useState } from "react";
+import React from "react"
+import Settings from "./settings"
+import Usages from "./usage"
+import Home from "./Home"
+import { BrowserRouter ,Routes,Route } from "react-router";
+import Header from "./header";
 
-function App() {
-  const [contact, setContact] = useState({
-    fName: "",
-    lName: "",
-    email: "",
-  });
-  function handleChange(event) {
-    const { name, value } = event.target;
+function App(){
 
-    event.preventDefault();
-
-    setContact((prevValue) => {
-      if (name === "fName") {
-        return {
-          fName: value,
-          lName: prevValue.lName,
-          email: prevValue.email,
-        };
-      } else if (name === "lName") {
-        return {
-          fName: prevValue.fName,
-          lName: value,
-          email: prevValue.email,
-        };
-      } else if (name === "email") {
-        return {
-          fName: prevValue.fName,
-          lName: prevValue.lName,
-          email: value,
-        };
-      }
-    });
-  }
 
   return (
+    <BrowserRouter>
+    
     <div className="container">
-      <h1>
-        Hello{contact.fName}
-        {contact.lName}
-      </h1>
-      <p>{contact.email}</p>
-      <form>
-        <input
-          type="text"
-          onChange={handleChange}
-          value={contact.fName}
-          placeholder="First Name"
-        />
-        <input
-          type="text"
-          onChange={handleChange}
-          value={contact.lName}
-          name=""
-          placeholder="Last Name"
-        />
-        <input
-          type="text"
-          onChange={handleChange}
-          value={contact.email}
-          placeholder="Email"
-        />
-      </form>
-
-      <button>submit </button>
+      <Header/>
     </div>
-  );
-}
+    <Routes>
+      <Route path ="/" element = {<Home/>}/>
+      <Route path ="settings" element = {<Settings/>}/>
+      <Route path ="usage" element = {<Usages/>}/>
+    </Routes>
 
-export default App;
+
+    </BrowserRouter>
+    
+
+  )}
+
+export default App
