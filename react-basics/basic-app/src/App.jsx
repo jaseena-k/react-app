@@ -1,29 +1,21 @@
-import React from "react";
-import axios from "axios"
-import { useState ,useEffect } from "react";
+import React from "react"
+const styles = {
+  button : {
+    background: "purple",
+    padding : "10px",
+  }
+}
 
 
-
-function  App(){
-
-  const [user ,setUser] = useState([])
-
-  useEffect(()=>{
-    axios.get("https://jsonplaceholder.typicode.com/users")
-    .then(res=>setUser(res.data))
-  
-     
-    },[])
-
-
-  return(
-    <>
-
-    {user.map (u=> <p key ={u.id}>{u.name}</p>)}
-    </>
-
-
-  )}
-
+const App = () => {
+  return (
+    <div>
+       <button style = {styles.button}> submit</button>
+    </div>
+  )
+}
 
 export default App
+
+
+
