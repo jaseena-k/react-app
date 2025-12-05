@@ -1,29 +1,31 @@
-import React from "react"
-import Settings from "./settings"
-import Usages from "./usage"
-import Home from "./Home"
-import { BrowserRouter ,Routes,Route } from "react-router";
-import Header from "./header";
-
-function App(){
+import React from "react";
+import { useState ,useEffect } from "react";
 
 
-  return (
-    <BrowserRouter>
-    
-    <div className="container">
-      <Header/>
-    </div>
-    <Routes>
-      <Route path ="/" element = {<Home/>}/>
-      <Route path ="settings" element = {<Settings/>}/>
-      <Route path ="usage" element = {<Usages/>}/>
-    </Routes>
+function  App(){
+
+  const [user ,setUser] = useState([])
+  const [loading ,setLoading] = useState(true)
+
+  useEffect(()=>{
+    fetch("https://jsonplaceholder.typicode.com/users")
+    .then(res=>res.json())
+    .then(data => {
+      setUser(data)
+      setLoading(false)
+    })
+  },[])
+
+      if(loading) return <p>Loading.....</p>
+
+  return(
+    <>
+
+    {user.map (u=> <p key ={u.id}>{u.name}</p>)}
+    </>
 
 
-    </BrowserRouter>
-    
-
-  )}
+  )
+}
 
 export default App
