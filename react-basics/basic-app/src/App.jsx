@@ -1,22 +1,20 @@
 import React from "react";
+import axios from "axios"
 import { useState ,useEffect } from "react";
+
 
 
 function  App(){
 
   const [user ,setUser] = useState([])
-  const [loading ,setLoading] = useState(true)
 
   useEffect(()=>{
-    fetch("https://jsonplaceholder.typicode.com/users")
-    .then(res=>res.json())
-    .then(data => {
-      setUser(data)
-      setLoading(false)
-    })
-  },[])
+    axios.get("https://jsonplaceholder.typicode.com/users")
+    .then(res=>setUser(res.data))
+  
+     
+    },[])
 
-      if(loading) return <p>Loading.....</p>
 
   return(
     <>
@@ -25,7 +23,7 @@ function  App(){
     </>
 
 
-  )
-}
+  )}
+
 
 export default App
