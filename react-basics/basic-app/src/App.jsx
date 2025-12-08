@@ -1,21 +1,28 @@
-import React from "react"
-const styles = {
-  button : {
-    background: "purple",
-    padding : "10px",
-  }
-}
+import React from "react";
+import { themeContex } from "./theme";
+import Home from "./Home";
 
 
-const App = () => {
+
+
+function App(){
   return (
-    <div>
-       <button style = {styles.button}> submit</button>
-    </div>
+
+
+    <themeContex.Provider value = {{theme: "dark"}}>
+      <Home/>
+
+    </themeContex.Provider>
+
+  
+
+
   )
+
 }
+
+
 
 export default App
-
 
 
